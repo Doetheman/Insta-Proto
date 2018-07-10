@@ -5,7 +5,7 @@
 //  Created by Dorian Holmes on 7/9/18.
 //  Copyright © 2018 Dorian Holmes. All rights reserved.
 //
-
+#import "Parse/Parse.h"
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
@@ -16,7 +16,35 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+
+    ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        
+        configuration.applicationId = @"codepathInstagram";
+        configuration.clientKey = @"codepathInstagramMaster";
+        configuration.server = @"https://codepathfbinstagram.herokuapp.com/parse";
+    }];
+    
+    [Parse initializeWithConfiguration:config];
+    
+//    PFObject *gameScore = [PFObject objectWithClassName:@"GameScore"];
+//    gameScore[@"score"] = @1337;
+//    gameScore[@"playerName"] = @"Sean Plott";
+//    gameScore[@"cheatMode"] = @NO;
+//    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (succeeded) {
+//            NSLog(@"Object saved!");
+//        } else {
+//            NSLog(@"Error: %@", error.description);
+//        }
+//    }];
+//
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
+    }
+    
     return YES;
 }
 

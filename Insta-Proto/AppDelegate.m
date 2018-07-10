@@ -20,9 +20,9 @@
 
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         
-        configuration.applicationId = @"codepathInstagram";
-        configuration.clientKey = @"codepathInstagramMaster";
-        configuration.server = @"https://codepathfbinstagram.herokuapp.com/parse";
+        configuration.applicationId = @"instaDemo";
+        configuration.clientKey = @"myMasterKey";
+        configuration.server = @"https://instagram-proto.herokuapp.com/parse";
     }];
     
     [Parse initializeWithConfiguration:config];

@@ -10,6 +10,6 @@
 
 @interface ComposeViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *image;
-@property (weak, nonatomic) IBOutlet UITextView *caption;
+@property (weak, nonatomic) IBOutlet UITextView *captionView;
 @property (strong, nonatomic) UIImage *composeImage;
 @end

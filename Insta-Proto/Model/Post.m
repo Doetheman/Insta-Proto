@@ -5,9 +5,10 @@
 //  Created by Dorian Holmes on 7/10/18.
 //  Copyright © 2018 Dorian Holmes. All rights reserved.
 //
-
+#import "postsTableViewCell.h"
 #import "Post.h"
 #import "Parse/Parse.h"
+#import <ParseUI/ParseUI.h>
 
 @implementation Post
 @dynamic postID;
@@ -49,5 +50,7 @@
     
     return [PFFile fileWithName:@"image.png" data:imageData];
 }
+
+
 
 @end

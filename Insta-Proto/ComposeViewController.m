@@ -5,10 +5,10 @@
 //  Created by Dorian Holmes on 7/9/18.
 //  Copyright © 2018 Dorian Holmes. All rights reserved.
 //
-
+#import "FeedViewController.h"
 #import "ComposeViewController.h"
-
-@interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+#import "Post.h"
+@interface ComposeViewController ()
 
 @end
 
@@ -19,11 +19,26 @@
     self.image.image = self.composeImage;
     // Do any additional setup after loading the view.
 }
+- (IBAction)share:(id)sender {
+    [Post postUserImage:self.image.image withCaption:self.captionView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error != nil ) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"User posted successfully");
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
+    
+}
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)cancel:(id)sender {
+    [self performSegueWithIdentifier:@"showFeed" sender:nil];
+
 }
 
 /*

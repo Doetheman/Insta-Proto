@@ -5,6 +5,7 @@
 //  Created by Dorian Holmes on 7/9/18.
 //  Copyright © 2018 Dorian Holmes. All rights reserved.
 //
+#import "Post.h"
 #import "postsTableViewCell.h"
 #import "Parse.h"
 #import "FeedViewController.h"
@@ -16,6 +17,8 @@
 
 @property NSArray *feed;
 @property UIImage *originalImage;
+@property (nonatomic, strong) UIRefreshControl *refreshControl; //Refresh variable
+
 @end
 
 @implementation FeedViewController
@@ -26,12 +29,21 @@
     // Do any additional setup after loading the view.
     self.postsTableView.delegate = self;
     self.postsTableView.dataSource = self;
+    self.postsTableView.rowHeight = 300;
+    
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(query) userInfo:nil repeats:true];
+    [self resizeImage:self.originalImage withSize:CGSizeMake(200, 200)];
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(query) userInfo:nil repeats:true];
+    
+    //Pull down refresh
+    self.refreshControl = [[UIRefreshControl alloc] init]; //initialize refresh control
+    [self.refreshControl addTarget:self action:@selector(query) forControlEvents:UIControlEventValueChanged];
+    [self.postsTableView insertSubview:self.refreshControl atIndex:0];//add refresh control to table behind the first cell
 }
+//Logs user out
 - (IBAction)logout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // Go back to login view
@@ -47,7 +59,6 @@
 - (void) query{
     
 PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-[query whereKey:@"likesCount" greaterThan:@100];
 query.limit = 20;
 
 // fetch data asynchronously
@@ -60,7 +71,20 @@ query.limit = 20;
     }
 }];
 }
-
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+// Opens camera or camera roll
 - (IBAction)CameraRoll:(id)sender {
     //instantiates image picker
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
@@ -81,6 +105,8 @@ query.limit = 20;
     
    
 }
+
+//Once image is selected store image in object and perform segue
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
@@ -90,7 +116,7 @@ query.limit = 20;
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
-      [self performSegueWithIdentifier:@"showComposeViewController" sender:nil];
+     [self performSegueWithIdentifier:@"showComposeViewController" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,24 +131,23 @@ query.limit = 20;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    ComposeViewController *composeView = (ComposeViewController *) [segue destinationViewController];
-    composeView.composeImage = self.originalImage;
+    UINavigationController *navigationConroller = [ segue destinationViewController];
+    ComposeViewController *composeView = (ComposeViewController*) navigationConroller.topViewController;
+   composeView.composeImage = self.originalImage;
+
     
 }
 
-
+//Deques cells
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
 
-    postsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"postsTableViewCell" forIndexPath: indexPath]; //Deque cell
-        // PFObject *posts = self.                   //index
-    
-//    PFUser *user = [PFUser user];
-//    cell.postImage.image = user[@"image"];
-//    cell.postLabel.text = user[@"caption" ];
+    postsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"postCell" forIndexPath: indexPath]; //Deque cell
+    Post * post = self.feed[indexPath.row];
+    cell.post = post;
     return cell;
     
 }
-
+//Amount of cells tableview will display
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.feed.count;
 }

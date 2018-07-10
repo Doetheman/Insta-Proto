@@ -7,6 +7,8 @@ target 'Insta-Proto' do
 
   # Pods for Insta-Proto
 	pod 'Parse'
+	pod 'ParseUI'
+	pod 'AFNetworking'
 
   target 'Insta-ProtoTests' do
     inherit! :search_paths

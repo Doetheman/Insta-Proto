@@ -19,9 +19,11 @@
 @property UIImage *originalImage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl; //Refresh variable
 
+
 @end
 
 @implementation FeedViewController
+
 
 - (void)viewDidLoad {
     
@@ -29,13 +31,12 @@
     // Do any additional setup after loading the view.
     self.postsTableView.delegate = self;
     self.postsTableView.dataSource = self;
-    self.postsTableView.rowHeight = 300;
+    self.postsTableView.rowHeight = UITableViewAutomaticDimension;
     
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     
-    [self resizeImage:self.originalImage withSize:CGSizeMake(200, 200)];
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(query) userInfo:nil repeats:true];
     
     //Pull down refresh
@@ -59,6 +60,7 @@
 - (void) query{
     
 PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+[query includeKey:@"author"];
 query.limit = 20;
 
 // fetch data asynchronously
@@ -71,19 +73,7 @@ query.limit = 20;
     }
 }];
 }
-- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
+
 // Opens camera or camera roll
 - (IBAction)CameraRoll:(id)sender {
     //instantiates image picker
@@ -151,6 +141,5 @@ query.limit = 20;
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.feed.count;
 }
-
 
 @end

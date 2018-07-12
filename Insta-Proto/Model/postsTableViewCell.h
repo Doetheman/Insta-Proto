@@ -13,5 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UILabel *postLabel;
 @property (strong, nonatomic) Post *post;
+@property (weak, nonatomic) IBOutlet UILabel *likesCount;
+@property (weak, nonatomic) IBOutlet UILabel *timeOfPost;
+@property (weak, nonatomic) IBOutlet UILabel *authorHeader;
 
 @end

@@ -10,7 +10,7 @@
 #import "postsTableViewCell.h"
 #import <ParseUI/ParseUI.h>
 #import <UIIMageView+AFNetworking.h>
-
+#import "DateTools.h"
 
 @implementation postsTableViewCell
 
@@ -32,7 +32,21 @@
     NSURL *urlLink = [NSURL URLWithString:url];
     [self.postImage setImageWithURL: urlLink];
     self.postLabel.text = post.caption;
-    
+    self.likesCount.text = [NSString stringWithFormat:@"%@", post.likeCount];
+    self.authorHeader.text = post.author.username;
+    NSDateFormatter * formatter= [[NSDateFormatter alloc]init];
+    //Configure input formate to parse the date string
+    formatter.dateFormat= @"E MMM d HH:mm:ss Z y";
+    //Convert string to date
+   // NSDate *date = [formatter dateFromString: post.createdAt];
+//    self.timeStamp= date.shortTimeAgoSinceNow;
+//    //Configure output format
+//    formatter.dateStyle = NSDateFormatterShortStyle;
+//    formatter.timeStyle = NSDateFormatterShortStyle;
+//    formatter.timeStyle = NSDateFormatterNoStyle;
+//    //Convert Date to String
+//    self.createdAtString = [formatter stringFromDate:date];
+//    self.timeOfPost.text=
 }
 
 @end

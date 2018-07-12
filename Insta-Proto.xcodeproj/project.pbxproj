@@ -11,6 +11,9 @@
 		F432CA448FCBECF7616968BE /* libPods-Insta-ProtoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AF8901932A8BF27EFF9013 /* libPods-Insta-ProtoUITests.a */; };
 		F468F9927EFCC192FD54DDB7 /* libPods-Insta-ProtoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9468DE4025F128E39C8636 /* libPods-Insta-ProtoTests.a */; };
 		FF0679D320F52D8E006D1536 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0679D220F52D8E006D1536 /* Post.m */; };
+		FFA28AE020F58B3B00572AE7 /* profileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA28ADF20F58B3B00572AE7 /* profileViewController.m */; };
+		FFA28AE520F69BB300572AE7 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA28AE420F69BB300572AE7 /* CollectionViewCell.m */; };
+		FFC7584D20F6D92100782690 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC7584C20F6D92100782690 /* DetailViewController.m */; };
 		FFC784EA20F4102D0009265B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC784E920F4102D0009265B /* AppDelegate.m */; };
 		FFC784ED20F4102D0009265B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC784EC20F4102D0009265B /* ViewController.m */; };
 		FFC784F020F4102D0009265B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC784EE20F4102D0009265B /* Main.storyboard */; };
@@ -54,6 +57,12 @@
 		FF0679D120F52D8E006D1536 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		FF0679D220F52D8E006D1536 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		FF10E7277008DA60DA184ED4 /* libPods-Insta-Proto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Insta-Proto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFA28ADE20F58B3B00572AE7 /* profileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = profileViewController.h; sourceTree = "<group>"; };
+		FFA28ADF20F58B3B00572AE7 /* profileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = profileViewController.m; sourceTree = "<group>"; };
+		FFA28AE320F69BB300572AE7 /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		FFA28AE420F69BB300572AE7 /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		FFC7584B20F6D92100782690 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		FFC7584C20F6D92100782690 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		FFC784E520F4102D0009265B /* Insta-Proto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Insta-Proto.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC784E820F4102D0009265B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FFC784E920F4102D0009265B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -136,8 +145,29 @@
 			children = (
 				FF0679D120F52D8E006D1536 /* Post.h */,
 				FF0679D220F52D8E006D1536 /* Post.m */,
+				FFC7852420F486A80009265B /* postsTableViewCell.h */,
+				FFC7852520F486A80009265B /* postsTableViewCell.m */,
+				FFA28AE320F69BB300572AE7 /* CollectionViewCell.h */,
+				FFA28AE420F69BB300572AE7 /* CollectionViewCell.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FFA28ADD20F58AC200572AE7 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FFC7851B20F414DC0009265B /* LoginViewController.h */,
+				FFC7851C20F414DC0009265B /* LoginViewController.m */,
+				FFC7851E20F438620009265B /* FeedViewController.h */,
+				FFC7851F20F438620009265B /* FeedViewController.m */,
+				FFC7852120F43BBA0009265B /* ComposeViewController.h */,
+				FFC7852220F43BBA0009265B /* ComposeViewController.m */,
+				FFA28ADE20F58B3B00572AE7 /* profileViewController.h */,
+				FFA28ADF20F58B3B00572AE7 /* profileViewController.m */,
+				FFC7584B20F6D92100782690 /* DetailViewController.h */,
+				FFC7584C20F6D92100782690 /* DetailViewController.m */,
+			);
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		FFC784DC20F4102D0009265B = {
@@ -165,24 +195,17 @@
 		FFC784E720F4102D0009265B /* Insta-Proto */ = {
 			isa = PBXGroup;
 			children = (
+				FFA28ADD20F58AC200572AE7 /* View Controller */,
 				FF0679D020F52D3C006D1536 /* Model */,
-				FFC7851B20F414DC0009265B /* LoginViewController.h */,
-				FFC7851C20F414DC0009265B /* LoginViewController.m */,
 				FFC784E820F4102D0009265B /* AppDelegate.h */,
 				FFC784E920F4102D0009265B /* AppDelegate.m */,
 				FFC784EB20F4102D0009265B /* ViewController.h */,
 				FFC784EC20F4102D0009265B /* ViewController.m */,
 				FFC784EE20F4102D0009265B /* Main.storyboard */,
-				FFC7852420F486A80009265B /* postsTableViewCell.h */,
-				FFC7852520F486A80009265B /* postsTableViewCell.m */,
 				FFC784F120F4102E0009265B /* Assets.xcassets */,
 				FFC784F320F4102E0009265B /* LaunchScreen.storyboard */,
 				FFC784F620F4102E0009265B /* Info.plist */,
 				FFC784F720F4102E0009265B /* main.m */,
-				FFC7851E20F438620009265B /* FeedViewController.h */,
-				FFC7851F20F438620009265B /* FeedViewController.m */,
-				FFC7852120F43BBA0009265B /* ComposeViewController.h */,
-				FFC7852220F43BBA0009265B /* ComposeViewController.m */,
 			);
 			path = "Insta-Proto";
 			sourceTree = "<group>";
@@ -396,6 +419,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Insta-Proto/Pods-Insta-Proto-resources.sh",
+				"${PODS_ROOT}/DateTools/DateTools/DateTools/DateTools.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle",
 				"${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/en.lproj",
 				"${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/fr.lproj",
@@ -403,6 +427,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DateTools.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Parse.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fr.lproj",
@@ -425,6 +450,9 @@
 				FFC784ED20F4102D0009265B /* ViewController.m in Sources */,
 				FFC7852620F486A80009265B /* postsTableViewCell.m in Sources */,
 				FFC7852320F43BBA0009265B /* ComposeViewController.m in Sources */,
+				FFA28AE020F58B3B00572AE7 /* profileViewController.m in Sources */,
+				FFA28AE520F69BB300572AE7 /* CollectionViewCell.m in Sources */,
+				FFC7584D20F6D92100782690 /* DetailViewController.m in Sources */,
 				FFC784F820F4102E0009265B /* main.m in Sources */,
 				FFC784EA20F4102D0009265B /* AppDelegate.m in Sources */,
 				FF0679D320F52D8E006D1536 /* Post.m in Sources */,

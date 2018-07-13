@@ -18,6 +18,7 @@
 @dynamic image;
 @dynamic likeCount;
 @dynamic commentCount;
+@dynamic likes;
 + (nonnull NSString *)parseClassName {
     return @"Post";
 }
@@ -31,7 +32,7 @@
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
-    
+    newPost.likes = [NSMutableArray new];
     [newPost saveInBackgroundWithBlock: completion];
 }
 
@@ -49,6 +50,14 @@
     }
     
     return [PFFile fileWithName:@"image.png" data:imageData];
+}
+-(void)like:( NSString *)object{
+    [self addObject:object forKey:@"likedBy"];
+    [self saveInBackground];
+}
+-(void)unlike:( NSString *)object{
+    [self removeObserver:object forKeyPath:@"likedBy"];
+    [self saveInBackground];
 }
 
 

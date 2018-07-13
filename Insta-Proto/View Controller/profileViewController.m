@@ -17,6 +17,7 @@
 @property (strong, nonatomic ) NSArray* currentUserPost;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionview;
 @property PFUser * user;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 
 @end
 
@@ -24,7 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.profilePic.layer.cornerRadius = 45;
+    self.profilePic.clipsToBounds = true;
     self.collectionview.dataSource = self;
     self.collectionview.delegate = self;
     self.user = PFUser.currentUser;

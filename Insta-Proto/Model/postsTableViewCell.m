@@ -16,6 +16,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     // Initialization code
 }
 
@@ -24,7 +25,14 @@
     // Configure the view for the selected state
 }
 
-
+-(void)likeAction{
+    if ([self.post.likes containsObject: PFUser.user.objectId]) {
+        self.likesCount.text = [NSString stringWithFormat:@"%lu", self.post.likes.count - 1];
+        self.like.setImage: [UIImage imageNamed:@" ]forState:<#(UIControlState)#>
+    } else {
+        <#statements#>
+    }
+}
 -(void) setPost:(Post *)post{
     _post = post;
 //(    PFFile *)getPFFileFromImage:

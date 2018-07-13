@@ -9,6 +9,8 @@
 #import "DetailViewController.h"
 #import "Parse/Parse.h"
 #import <UIIMageView+AFNetworking.h>
+#import "DateTools.h"
+
 @interface DetailViewController ()
 
 @end
@@ -18,34 +20,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //(    PFFile *)getPFFileFromImage:
+    NSString *url = self.selectedPost.image.url ;
+    NSURL *urlLink = [NSURL URLWithString:url];
+    [self.detailImage setImageWithURL: urlLink];
+    self.captionLabel.text = self.selectedPost.caption;
+    self.likeCount.text = [NSString stringWithFormat:@"%@", self.selectedPost.likeCount];
+    self.currentUser.text = self.selectedPost.author.username;
+    NSDateFormatter * formatter= [[NSDateFormatter alloc]init];
+    //Configure input formate to parse the date string
+    formatter.dateFormat= @"E MMM d HH:mm:ss Z y";
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    //Convert string to date
+     NSString *date = [formatter stringFromDate: self.selectedPost.createdAt];
+     self.timeLabel.text = date;
+
+}
+- (IBAction)profile:(id)sender {
+    [self performSegueWithIdentifier:@"showFeed" sender:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
--(void) setPost:(Post *)post{
-    self.post = post;
-    //(    PFFile *)getPFFileFromImage:
-    NSString *url = post.image.url ;
-    NSURL *urlLink = [NSURL URLWithString:url];
-    [self.detailImage setImageWithURL: urlLink];
-    self.captionLabel.text = post.caption;
-    self.likeCount.text = [NSString stringWithFormat:@"%@", post.likeCount];
-    self.currentUser.text = post.author.username;
-    NSDateFormatter * formatter= [[NSDateFormatter alloc]init];
-    //Configure input formate to parse the date string
-    formatter.dateFormat= @"E MMM d HH:mm:ss Z y";
-    //Convert string to date
-    // NSDate *date = [formatter dateFromString: post.createdAt];
-    //    self.timeStamp= date.shortTimeAgoSinceNow;
-    //    //Configure output format
-    //    formatter.dateStyle = NSDateFormatterShortStyle;
-    //    formatter.timeStyle = NSDateFormatterShortStyle;
-    //    formatter.timeStyle = NSDateFormatterNoStyle;
-    //    //Convert Date to String
-    //    self.createdAtString = [formatter stringFromDate:date];
-    //    self.timeOfPost.text=
 }
 
 /*

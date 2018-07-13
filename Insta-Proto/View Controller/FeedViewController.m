@@ -92,8 +92,6 @@ query.limit = 20;
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     [ self presentViewController:imagePickerVC animated:true completion:nil ];
-    
-   
 }
 
 //Once image is selected store image in object and perform segue

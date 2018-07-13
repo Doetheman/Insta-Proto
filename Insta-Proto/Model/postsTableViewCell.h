@@ -16,5 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *likesCount;
 @property (weak, nonatomic) IBOutlet UILabel *timeOfPost;
 @property (weak, nonatomic) IBOutlet UILabel *authorHeader;
+@property (weak, nonatomic) IBOutlet UIButton *share;
+@property (weak, nonatomic) IBOutlet UIButton *like;
+@property (weak, nonatomic) IBOutlet UIButton *comment;
 
 @end

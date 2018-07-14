@@ -21,6 +21,9 @@
 @property (strong, nonatomic) id<CollectionViewCellDelegate> delegate;
 @end
 
+
+//Creation of protocal method
+
 @protocol CollectionViewCellDelegate
 
 -(void) collectionViewCell:(CollectionViewCell *)collectionViewCell didTap:(Post *) tapPost;

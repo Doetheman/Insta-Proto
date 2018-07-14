@@ -10,7 +10,8 @@ target 'Insta-Proto' do
 	pod 'ParseUI'
 	pod 'AFNetworking'
         pod 'DateTools'
-
+	pod 'FLAnimatedImage', '~> 1.0'
+p
   target 'Insta-ProtoTests' do
     inherit! :search_paths
     # Pods for testing

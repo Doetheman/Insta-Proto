@@ -37,8 +37,8 @@
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(query) userInfo:nil repeats:true];
-    
+   // [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(query) userInfo:nil repeats:true];
+    [self query ];
     //Pull down refresh
     self.refreshControl = [[UIRefreshControl alloc] init]; //initialize refresh control
     [self.refreshControl addTarget:self action:@selector(query) forControlEvents:UIControlEventValueChanged];
@@ -72,6 +72,7 @@ query.limit = 20;
         NSLog(@"%@", error.localizedDescription);
     }
 }];
+    [self.refreshControl endRefreshing];
 }
 
 // Opens camera or camera roll

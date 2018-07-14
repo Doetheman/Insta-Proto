@@ -145,8 +145,8 @@
 			children = (
 				FF0679D120F52D8E006D1536 /* Post.h */,
 				FF0679D220F52D8E006D1536 /* Post.m */,
-				FFC7852420F486A80009265B /* postsTableViewCell.h */,
 				FFC7852520F486A80009265B /* postsTableViewCell.m */,
+				FFC7852420F486A80009265B /* postsTableViewCell.h */,
 				FFA28AE320F69BB300572AE7 /* CollectionViewCell.h */,
 				FFA28AE420F69BB300572AE7 /* CollectionViewCell.m */,
 			);

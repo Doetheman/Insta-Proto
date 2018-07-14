@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likeCount;
 @property (weak, nonatomic) IBOutlet UILabel *currentUser;
+@property (weak, nonatomic) IBOutlet UILabel *currentUserAbovePost;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageDetailView;
 
 
 @end

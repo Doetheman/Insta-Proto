@@ -38,7 +38,7 @@
 
     layout.minimumInteritemSpacing =3;
     layout.minimumLineSpacing = 3;
-    CGFloat postersPerLine = 4;
+    CGFloat postersPerLine = 3;
     CGFloat itemWidth = (self.collectionview.frame.size.width -  layout.minimumInteritemSpacing*(postersPerLine-1))/postersPerLine;
     CGFloat itemHeight = itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
@@ -80,8 +80,7 @@
     //Setting delegate to ProfileController
     Post *detail = self.currentUserPost[indexPath.row] ;
     // Pass the selected object to the new view controller.
-    UINavigationController *navController = [ segue destinationViewController];
-    DetailViewController *detailController = (DetailViewController*) navController.topViewController;
+    DetailViewController *detailController =  [segue destinationViewController];
     
     detailController.selectedPost = detail;
 }

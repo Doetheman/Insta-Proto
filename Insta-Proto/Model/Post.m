@@ -51,12 +51,12 @@
     
     return [PFFile fileWithName:@"image.png" data:imageData];
 }
--(void)like:( NSString *)object{
-    [self addObject:object forKey:@"likedBy"];
+-(void)like:( NSString *)objects {
+    [self addObject:objects forKey:@"likedBy"];
     [self saveInBackground];
 }
--(void)unlike:( NSString *)object{
-    [self removeObserver:object forKeyPath:@"likedBy"];
+-(void)unlike:( NSString *)objects{
+    [self removeObject:objects forKey:@"likedBy"];
     [self saveInBackground];
 }
 

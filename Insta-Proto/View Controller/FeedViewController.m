@@ -18,6 +18,7 @@
 @property NSArray *feed;
 @property UIImage *originalImage;
 @property (nonatomic, strong) UIRefreshControl *refreshControl; //Refresh variable
+@property Post *post;
 
 
 @end
@@ -62,7 +63,8 @@
 PFQuery *query = [PFQuery queryWithClassName:@"Post"];
 [query includeKey:@"author"];
 query.limit = 20;
-
+    
+    [query orderByDescending: @"createdAt"];
 // fetch data asynchronously
 [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
     if (posts != nil) {

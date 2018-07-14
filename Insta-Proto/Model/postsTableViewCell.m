@@ -50,7 +50,7 @@
 //(    PFFile *)getPFFileFromImage:
     NSString *url = post.image.url ;
     NSURL *urlLink = [NSURL URLWithString:url];
-    self.postImage.image = nil; 
+    self.postImage.image = nil;
     [self.postImage setImageWithURL: urlLink];
     self.postLabel.text = post.caption;
     self.likesCount.text = [NSString stringWithFormat:@"%@", post.likeCount];

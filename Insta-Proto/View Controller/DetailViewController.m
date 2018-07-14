@@ -31,13 +31,13 @@
     //Make url out of string
     NSURL *urlLink = [NSURL URLWithString:url];
     //Use url to place image in imageview
-   // [self.detailImage setImageWithURL: urlLink];
+   [self.detailImage setImageWithURL: urlLink];
     
-    self.FLimage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:urlLink]];
-    FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
-    imageView.animatedImage = self.FLimage;
+//    self.FLimage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:urlLink]];
+//    FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
+//    imageView.animatedImage = self.FLimage;
+  //  self.detailImage = imageView;
     
-    self.detailImage = imageView;
     //Replace label text with post caption
     self.captionLabel.text = self.selectedPost.caption;
     //Gets the amount of likes from post

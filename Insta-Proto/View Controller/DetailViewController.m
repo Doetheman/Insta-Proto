@@ -31,9 +31,9 @@
     //Make url out of string
     NSURL *urlLink = [NSURL URLWithString:url];
     //Use url to place image in imageview
-    [self.detailImage setImageWithURL: urlLink];
+   // [self.detailImage setImageWithURL: urlLink];
     
-    self.FLimage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:[NSURL URLWithString: self.selectedPost.image.url]]];
+    self.FLimage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:urlLink]];
     FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
     imageView.animatedImage = self.FLimage;
     

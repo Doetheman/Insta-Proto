@@ -5,7 +5,7 @@
 //  Created by Dorian Holmes on 7/9/18.
 //  Copyright © 2018 Dorian Holmes. All rights reserved.
 //
-
+#import "FLAnimatedImage.h"
 #import <UIKit/UIKit.h>
 #import "Post.h"
 
@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *like;
 @property (weak, nonatomic) IBOutlet UIButton *comment;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (strong , nonatomic) FLAnimatedImage *FLimage;
 
 
 
